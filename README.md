@@ -4,13 +4,13 @@ Katana is very, very limited at the moment.
 
 Only the following tags can be rendered
 
-<h1>
-<h2>
-<h3>
-<h4>
-<h5>
-<h6>
-<p>
+h1
+h2
+h3
+h4
+h5
+h6
+p
   
 Featrues:
   
