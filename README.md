@@ -11,6 +11,13 @@ h4
 h5
 h6
 p
+
+Install:
+  If you would like to test this on your computer run the following commands<br>
+    <br>git clone https://github.com/Darth-Ness/Katana-HTML-Renderer.git <br>
+    cd Katana-HTML-Renderer<br>
+    chmod u+x parser.py <br>
+    python3 parser.py
   
 Featrues:
   
