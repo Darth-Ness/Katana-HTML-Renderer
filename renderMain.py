@@ -20,7 +20,7 @@ def startWindow(TTF, TT):
     root = tkinter.Tk()
     root.configure(bg='white', padx=8, pady=8)
     root.geometry("1900x1200")
-    root.title("ZeroBlade")
+    root.title("Katana")
     u = 0
     while(u < len(TTF)):
         if not TTF[u] in TT:
@@ -51,5 +51,5 @@ def renderText(TRtext, ITR, TTR):
     text = tkinter.Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg='white')
     text.pack(side=tkinter.TOP, anchor=tkinter.NW)
 
-    myFont = Font(family="SF Pro", size=int(textSize))
+    myFont = Font(family="SF Pro", size=int(textSize)-3)
     text.configure(font=myFont)
