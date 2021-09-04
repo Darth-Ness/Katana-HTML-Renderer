@@ -17,7 +17,7 @@ Install:
     <br>git clone https://github.com/Darth-Ness/Katana-HTML-Renderer.git <br>
     cd Katana-HTML-Renderer<br>
     chmod u+x parser.py <br>
-    python3 parser.py
+    python3 importer.py
   
 Featrues:
   
@@ -25,10 +25,9 @@ Featrues:
   It is very fast, on my system it was able to render (a very basic webpage) in 140 ms! And most of that was probably interpreting
   
  Limitations:
-  It is text only
+  It can only render text
   No CSS parsing
   No JavaScript - at all
-  Can't parse actual files, all code has to be predefined in a python list
   
  Have something you would like to add?:
   
