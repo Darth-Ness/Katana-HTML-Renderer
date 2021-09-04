@@ -1,31 +1,29 @@
-import globalvar
-import newLine
 import renderMain
+import newLine
 
  #Completes spliting lines with a open (<example>) and a close (</example>)
  #It also removes spaces from non outputed text
 
-def parse() :
+def parse(toParse) :
     i = 0
     u = 0
-    if ">" in globalvar.input[i]:
-
+    if ">" in toParse[i]:
 
         #Scan for a ">"
 
-        while (i < len(globalvar.input)):
+        while (i < len(toParse)):
         
-            while(u < len(globalvar.input[i])):
+            while(u < len(toParse[i])):
 
-                if globalvar.input[i][u] == ">":
-                    newLine.pushEnter(u, len(globalvar.input[i]), i)
+                if toParse[i][u] == ">":
+                    newLine.pushEnter(u, len(toParse[i]), i, toParse)
                 u+=1
             i+=1
             u = 0
 
     #Invoke the renderer
-    renderMain.identifyModule(globalvar.input)
+    renderMain.identifyModule(toParse)
 
 
 #This runs "parse" and "pushEnter"
-parse()
+#parse()

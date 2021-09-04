@@ -2,7 +2,7 @@ import tkinter
 from tkinter.font import Font
 
 def identifyModule(toRender):
-
+    print(toRender)
     i = 0
     d = 0
     textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]

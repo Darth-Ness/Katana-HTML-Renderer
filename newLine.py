@@ -1,8 +1,6 @@
-import globalvar
-
 #When a ">" is detected move the rest of the line to a new element
 
-def pushEnter(linePos, lineLength, lineElement) :
+def pushEnter(linePos, lineLength, lineElement, list) :
     
     #Check if ">" is at the end of the line
     if linePos+1 != lineLength:
@@ -14,25 +12,25 @@ def pushEnter(linePos, lineLength, lineElement) :
         endingTag = ""
         
         parseValue = ""
-
+        #print(list)
         #Idenitfy the opening tag
-        while(globalvar.input[g][i] != ">"):
+        while(list[g][i] != ">"):
 
-            openingTag += globalvar.input[g][i]
+            openingTag += list[g][i]
             i+=1
         openingTag +=">"
 
         #Loop to the end of the item then add it to a new line
 
-        while(p < lineLength-1 and globalvar.input[g][p+1] != "<" and globalvar.input[g][p+2] != "/"):
+        while(p < lineLength-1 and list[g][p+1] != "<" and list[g][p+2] != "/"):
 
             p+=1
-            parseValue += globalvar.input[g][p]
+            parseValue += list[g][p]
         while(p < lineLength-1):
             p+=1
-            endingTag += globalvar.input[g][p]
+            endingTag += list[g][p]
 
-        globalvar.input.insert(g+1, openingTag)
-        globalvar.input.insert(g+2, parseValue)
-        globalvar.input.insert(g+3, endingTag)
-        del globalvar.input[g]
+        list.insert(g+1, openingTag)
+        list.insert(g+2, parseValue)
+        list.insert(g+3, endingTag)
+        del list[g]
