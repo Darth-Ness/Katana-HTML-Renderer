@@ -4,7 +4,7 @@ Katana is very, very limited at the moment.
 
 Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, and `p`
 
-## Install:
+## Install
 If you would like to test this on your computer run the following commands:
 ```bash
 git clone https://github.com/Darth-Ness/Katana-HTML-Renderer.git
@@ -13,11 +13,11 @@ chmod u+x parser.py
 python3 importer.py
 ```
   
-## Features:
+## Features
 Due to the way code is rendered, you do not have to close your tags.
 It is very fast, on my system it was able to render (a very basic webpage) in 140 ms! And most of that was probably interpreting.
   
-## Limitations:
+## Limitations
 - It can only render text.
 - No CSS parsing.
 - No JavaScript at all.
