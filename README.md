@@ -14,8 +14,8 @@ python3 importer.py
 ```
   
 ## Features
-Due to the way code is rendered, you do not have to close your tags.
-It is very fast, on my system it was able to render (a very basic webpage) in 140 ms! And most of that was probably interpreting.
+- Due to the way code is rendered, you do not have to close your tags.
+- It is very fast, on my system it was able to render (a very basic webpage) in 140 ms! And most of that was probably interpreting.
   
 ## Limitations
 - It can only render text.
