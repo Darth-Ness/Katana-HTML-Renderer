@@ -23,7 +23,3 @@ def parse(toParse) :
 
     #Invoke the renderer
     renderMain.identifyModule(toParse)
-
-
-#This runs "parse" and "pushEnter"
-#parse()
