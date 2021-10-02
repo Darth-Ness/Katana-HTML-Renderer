@@ -26,7 +26,7 @@ def startWindow(toRender, TT):
     u = 0
     print(toRender)
     while(u < len(toRender)):
-        if toRender[u-1] in TT:  #not toRender[u] in TT or tagsNotToType in toRender:
+        if toRender[u-1] in TT:
             renderText(toRender, u, root)
         if "<img" in toRender[u]:
             renderImage(root, toRender[u])
@@ -64,6 +64,7 @@ def renderImage(root, tags):
     canvas = tkinter.Canvas(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0)      
     canvas.pack(anchor=tkinter.NW)          
     canvas.create_image(0, 0, image=img, anchor=tkinter.NW)
+    root.mainloop()
 
 def findTarget(item):
     #Loop through the item to find a quotation mark 
