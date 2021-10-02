@@ -1,8 +1,11 @@
-# Katana---HTML-Renderer
+# Katana-HTML-Renderer-Dev
 
 Katana is very, very limited at the moment.
+When using the dev version you get the lastest features, but it is not as stable as the main branch.
 
-Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, and `p`
+Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, and `p`, `img`
+## Note about Img
+Support for this tag is limited. As you can only render one image at a time.
 
 ## Install
 If you would like to test this on your computer run the following commands:
