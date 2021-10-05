@@ -22,7 +22,7 @@ def startWindow(toRender, TT):
     root = tkinter.Tk()
     root.configure(bg='white', padx=8, pady=8)
     root.geometry("1900x1200")
-    root.title("Katana")
+    root.title("Katana 0.02")
     u = 0
     print(toRender)
     while(u < len(toRender)):
@@ -31,7 +31,7 @@ def startWindow(toRender, TT):
         if "<img" in toRender[u]:
             renderImage(root, toRender[u])
         u+=1
-    #root.destroy()
+    root.destroy()
     root.mainloop()
 
 
@@ -59,12 +59,11 @@ def renderText(TRtext, ITR, TTR):
 
 #Render image after finding the file
 def renderImage(root, tags):
-    fileToRender = findTarget(tags)
-    img = ImageTk.PhotoImage(Image.open(fileToRender))  
-    canvas = tkinter.Canvas(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0)      
-    canvas.pack(anchor=tkinter.NW)          
-    canvas.create_image(0, 0, image=img, anchor=tkinter.NW)
-    root.mainloop()
+    global img
+    img = ImageTk.PhotoImage(Image.open(findTarget(tags)))
+    panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
+    panel.image = img
+    panel.pack(anchor=tkinter.NW)
 
 def findTarget(item):
     #Loop through the item to find a quotation mark 
