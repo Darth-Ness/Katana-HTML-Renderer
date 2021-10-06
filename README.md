@@ -3,9 +3,7 @@
 Katana is very, very limited at the moment.
 When using the dev version you get the lastest features, but it is not as stable as the main branch.
 
-Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, and `p`, `img`
-## Note about Img
-Support for this tag is limited. As you can only render one image at a time.
+Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `img`
 
 ## Install
 If you would like to test this on your computer run the following commands:
@@ -18,7 +16,7 @@ python3 importer.py
   
 ## Features
 - Due to the way code is rendered, you do not have to close your tags.
-- It is very fast, on my system it was able to render (a very basic webpage) in 140 ms! And most of that was probably interpreting.
+- It is very fast, on my system it was able to render (a very basic webpage) in 140 ms (230ms with images)! And most of that was probably interpreting.
   
 ## Limitations
 - It can only render text.
