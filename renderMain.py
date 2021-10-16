@@ -37,22 +37,20 @@ def startWindow(toRender, TT):
 
 def renderText(TRtext, ITR, TTR):
 
-    textSize = 16
+    textSize = 12
     
     if "<h1>" in TRtext[ITR-1]:
-        textSize = 32
+        textSize = 23.9
     if "<h2>" in TRtext[ITR-1]:
-        textSize = 24
+        textSize = 17.9
     if "<h3>" in TRtext[ITR-1]:
-        textSize = 20.8
+        textSize = 14
     if "<h4>" in TRtext[ITR-1]:
-        textSize = 16
+        textSize = 15.9
     if "<h5>" in TRtext[ITR-1]:
-        textSize = 12.8
+        textSize = 9.9
     if "<h6>" in TRtext[ITR-1]:
-        textSize = 11.2
-    if "<p>" in TRtext[ITR-1]:
-        textSize = 16
+        textSize = 8
     myFont = Font(family="SF Pro", size=int(textSize)-3)
     text = tkinter.Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
     text.pack(side=tkinter.TOP, anchor=tkinter.NW)
