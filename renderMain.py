@@ -31,7 +31,7 @@ def startWindow(toRender, TT):
         if "<img" in toRender[u]:
             renderImage(root, toRender[u])
         u+=1
-    root.destroy()
+    #root.destroy()
     root.mainloop()
 
 
