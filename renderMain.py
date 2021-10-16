@@ -1,31 +1,37 @@
 import tkinter
 from tkinter.font import Font
+from PIL import ImageTk, Image
 
 def identifyModule(toRender):
-    print(toRender)
     i = 0
-    d = 0
+    print(toRender)
     textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]
-    textTagsFound = []
+    tagsFound = []
     while(i < len(toRender)):
         
         if toRender[i] in textTags and "/" not in toRender[i]:
-            textTagsFound.append(toRender[i])
-            textTagsFound.append(toRender[i+1])
-            d+=1
+            tagsFound.append(toRender[i])
+            tagsFound.append(toRender[i+1])
+        if "img" in toRender[i]:
+            tagsFound.append(toRender[i])
+       
         i+=1
-    startWindow(textTagsFound, textTags)
+    startWindow(tagsFound, textTags)
 
-def startWindow(TTF, TT):
+def startWindow(toRender, TT):
     root = tkinter.Tk()
     root.configure(bg='white', padx=8, pady=8)
     root.geometry("1900x1200")
-    root.title("Katana")
+    root.title("Katana 0.02")
     u = 0
-    while(u < len(TTF)):
-        if not TTF[u] in TT:
-            renderText(TTF, u, root)
+    print(toRender)
+    while(u < len(toRender)):
+        if toRender[u-1] in TT:
+            renderText(toRender, u, root)
+        if "<img" in toRender[u]:
+            renderImage(root, toRender[u])
         u+=1
+    root.destroy()
     root.mainloop()
 
 
@@ -45,9 +51,30 @@ def renderText(TRtext, ITR, TTR):
         textSize = 9.9
     if "<h6>" in TRtext[ITR-1]:
         textSize = 8
-
-    text = tkinter.Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg='white')
+    myFont = Font(family="SF Pro bold", size=int(textSize))
+    if "<p>" in TRtext[ITR-1]:
+        myFont.configure(family="SF Pro")
+    text = tkinter.Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
     text.pack(side=tkinter.TOP, anchor=tkinter.NW)
+#Render image after finding the file
+def renderImage(root, tags):
+    global img
+    img = ImageTk.PhotoImage(Image.open(findTarget(tags)))
+    panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
+    panel.image = img
+    panel.pack(anchor=tkinter.NW)
 
-    myFont = Font(family="SF Pro", size=int(textSize)-3)
-    text.configure(font=myFont)
+def findTarget(item):
+    #Loop through the item to find a quotation mark 
+
+    i = 0
+    fileName = ""
+    while (item[i] != "\""):
+        i+=1
+    #then find the name of the file by moving to the next mark
+    i+=1
+
+    while (item[i] != "\""):
+        fileName += item[i]
+        i+=1
+    return fileName

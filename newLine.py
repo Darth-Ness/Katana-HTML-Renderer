@@ -12,17 +12,15 @@ def pushEnter(linePos, lineLength, lineElement, list) :
         endingTag = ""
         
         parseValue = ""
-        #print(list)
         #Idenitfy the opening tag
-        while(list[g][i] != ">"):
 
+        while(list[g][i] != ">"):
             openingTag += list[g][i]
             i+=1
         openingTag +=">"
 
         #Loop to the end of the item then add it to a new line
-
-        while(p < lineLength-1 and list[g][p+1] != "<" and list[g][p+2] != "/"):
+        while(p < lineLength-2 and list[g][p+1] != "<" and list[g][p+2] != "/"):
 
             p+=1
             parseValue += list[g][p]

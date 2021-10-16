@@ -1,5 +1,6 @@
 import parser
-fileName = input("Enter HTML file: ")
+fileName = "test.html"
+#input("Enter HTML file: ")
 input = []
 
 #convert the file to a list for parsing
@@ -11,7 +12,6 @@ def parse(toParse):
         
         print(i)
         if i > 0:
-            #if toParse[i] == "/" and toParse[i+1] == "n" or toParse[i] == "n" and toParse[i-1] == "/":
             parseValue += toParse[i]
         if toParse[i] == ">":
             input.append(parseValue)
