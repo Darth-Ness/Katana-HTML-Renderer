@@ -51,10 +51,11 @@ def renderText(TRtext, ITR, TTR):
         textSize = 9.9
     if "<h6>" in TRtext[ITR-1]:
         textSize = 8
-    myFont = Font(family="SF Pro", size=int(textSize)-3)
+    myFont = Font(family="SF Pro bold", size=int(textSize))
+    if "<p>" in TRtext[ITR-1]:
+        myFont.configure(family="SF Pro")
     text = tkinter.Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
     text.pack(side=tkinter.TOP, anchor=tkinter.NW)
-
 #Render image after finding the file
 def renderImage(root, tags):
     global img
