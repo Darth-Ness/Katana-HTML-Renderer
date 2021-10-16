@@ -1,6 +1,6 @@
 import parser
-fileName = "test.html"
-#input("Enter HTML file: ")
+#fileName = "test.html"
+fileName = input("Enter HTML file: ")
 input = []
 
 #convert the file to a list for parsing
