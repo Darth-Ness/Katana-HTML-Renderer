@@ -2,31 +2,16 @@ import tkinter
 from tkinter.font import Font
 from PIL import ImageTk, Image
 
-def identifyModule(toRender):
-    i = 0
-    print(toRender)
-    textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]
-    tagsFound = []
-    while(i < len(toRender)):
-        
-        if toRender[i] in textTags and "/" not in toRender[i]:
-            tagsFound.append(toRender[i])
-            tagsFound.append(toRender[i+1])
-        if "img" in toRender[i]:
-            tagsFound.append(toRender[i])
-       
-        i+=1
-    startWindow(tagsFound, textTags)
 
-def startWindow(toRender, TT):
+def startWindow(toRender):
     root = tkinter.Tk()
+    textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]
     root.configure(bg='white', padx=8, pady=8)
     root.geometry("1900x1200")
     root.title("Katana 0.02")
     u = 0
-    print(toRender)
     while(u < len(toRender)):
-        if toRender[u-1] in TT:
+        if toRender[u-1] in textTags:
             renderText(toRender, u, root)
         if "<img" in toRender[u]:
             renderImage(root, toRender[u])
@@ -52,8 +37,6 @@ def renderText(TRtext, ITR, TTR):
     if "<h6>" in TRtext[ITR-1]:
         textSize = 8
     myFont = Font(family="SF Pro bold", size=int(textSize))
-    if "<p>" in TRtext[ITR-1]:
-        myFont.configure(family="SF Pro")
     text = tkinter.Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
     text.pack(side=tkinter.TOP, anchor=tkinter.NW)
 #Render image after finding the file
