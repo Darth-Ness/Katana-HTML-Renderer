@@ -1,7 +1,6 @@
 import parser
 #fileName = "test.html"
 fileName = input("Enter HTML file: ")
-input = []
 
 #convert the file to a list for parsing
 
@@ -9,8 +8,6 @@ def parse(toParse):
     i = 0
     parseValue = ""
     while (i < len(toParse)):
-        
-        print(i)
         if i > 0:
             parseValue += toParse[i]
         if toParse[i] == ">":

@@ -1,13 +1,13 @@
 import tkinter
 from tkinter.font import Font
 from PIL import ImageTk, Image
+import parser
 
 
 def startWindow(toRender):
     root = tkinter.Tk()
     textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]
     root.configure(bg='white', padx=8, pady=8)
-    root.geometry("1900x1200")
     root.title("Katana 0.02")
     u = 0
     while(u < len(toRender)):
@@ -15,6 +15,8 @@ def startWindow(toRender):
             renderText(toRender, u, root)
         if "<img" in toRender[u]:
             renderImage(root, toRender[u])
+        if "<button" in toRender[u]:
+            renderButton(root, toRender[u+1])
         u+=1
     #root.destroy()
     root.mainloop()
@@ -23,6 +25,7 @@ def startWindow(toRender):
 def renderText(TRtext, ITR, TTR):
 
     textSize = 12
+
     
     if "<h1>" in TRtext[ITR-1]:
         textSize = 23.9
@@ -61,3 +64,7 @@ def findTarget(item):
         fileName += item[i]
         i+=1
     return fileName
+
+def renderButton(window, text):
+    button = tkinter.Button(window, text=text)
+    button.pack(anchor=tkinter.NW)
