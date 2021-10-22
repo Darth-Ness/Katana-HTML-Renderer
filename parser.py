@@ -22,4 +22,4 @@ def parse(toParse) :
             u = 0
 
     #Invoke the renderer
-    renderMain.identifyModule(toParse)
+    renderMain.startWindow(toParse)
