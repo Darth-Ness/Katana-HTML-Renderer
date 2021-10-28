@@ -15,7 +15,7 @@ def startWindow(toRender):
             renderButton(root, toRender[u+1])
         u+=1
     
-    root.destroy()
+    #root.destroy()
     root.mainloop()
 
 
