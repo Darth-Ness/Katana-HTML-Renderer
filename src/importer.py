@@ -3,7 +3,8 @@ import renderMain
 
 #fileName = "test.html"
 fileName = input("Enter HTML file: ")
-
+if (fileName == "test.htm"):
+    fileName = "~/Code/Katana-HTML-Renderer/core/test.htm"
 #Check if target is a URL or a local file
 def read():
     if (":"  not in fileName):
