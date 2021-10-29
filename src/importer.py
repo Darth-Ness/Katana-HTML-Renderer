@@ -17,8 +17,7 @@ def read():
 
             HTML4 = ">".join(map(str,HTML3))
             HTML5 = (HTML4.split(">"))
-            end = time()
-
+ 
             renderMain.startWindow(HTML5)
     else:
         #Parse HTML for websites on the internet

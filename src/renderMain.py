@@ -6,6 +6,7 @@ def startWindow(toRender):
     root.configure(bg='white', padx=8, pady=8)
     root.title("Katana 0.03")
     u = 0
+    print(toRender)
     while(u < len(toRender)):
         if toRender[u] in textTags:
             renderText(toRender, u, root)
