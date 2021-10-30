@@ -5,22 +5,28 @@ def startWindow(toRender):
     textTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p"]
     root.configure(bg='white', padx=8, pady=8)
     root.title("Katana 0.03")
+    isCentered = False
     u = 0
-    print(toRender)
     while(u < len(toRender)):
         if toRender[u] in textTags:
-            renderText(toRender, u, root)
+            renderText(toRender, u, root, isCentered)
         if "img" in toRender[u]:
             renderImage(root, toRender[u])
         if "button" in toRender[u] and not "/" in toRender[u]:
             renderButton(root, toRender[u+1])
+        if "br" in toRender[u]:
+            renderBreak(root,isCentered)
+        if "center" in toRender[u]:
+            isCentered = True
+        if "/center" in toRender[u]:
+            isCentered = False
         u+=1
     
     #root.destroy()
     root.mainloop()
 
 
-def renderText(TRtext, ITR, TTR):
+def renderText(TRtext, ITR, TTR, C):
     from tkinter.font import Font
     textSize = 12
 
@@ -38,7 +44,10 @@ def renderText(TRtext, ITR, TTR):
         textSize = 8
     myFont = Font(family="SF Pro bold", size=int(textSize))
     text = tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
-    text.pack(side=tkinter.TOP, anchor=tkinter.NW)
+    if (C):
+        text.pack(side=tkinter.TOP, anchor=tkinter.CENTER)
+    else:
+        text.pack(side=tkinter.TOP, anchor=tkinter.NW)
 #Render image after finding the file
 def renderImage(root, tags):
     from PIL import ImageTk, Image
@@ -66,3 +75,10 @@ def findTarget(item):
 def renderButton(window, text):
     button = tkinter.Button(window, text=text)
     button.pack(anchor=tkinter.NW)
+
+def renderBreak(window, centered):
+    br = tkinter.Label(window, bg="white")
+    if (centered):
+        br.pack(side=tkinter.TOP, anchor=tkinter.CENTER)
+    else:
+        br.pack(side=tkinter.TOP, anchor=tkinter.NW)
