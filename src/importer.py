@@ -3,11 +3,11 @@ import renderMain
 #Check if target is a URL or a local file
 def read():
 
-    #fileName = "test.html"
+    #fileName = "test.htm"
     fileName = input("Enter HTML file: ")
 
     if (fileName == "test.htm"):
-        fileName = "~/Code/Katana-HTML-Renderer/core/test.htm"
+        fileName = "core/test.htm"
         
     if (":"  not in fileName):
         #Parse HTML for local file
@@ -21,7 +21,7 @@ def read():
                 HTML4 = ">".join(map(str,HTML3))
                 HTML5 = (HTML4.split(">"))
  
-                renderMain.startWindow(HTML5)
+                renderMain.startWindow(HTML5, False, fileName)
         except:
             with open("core/404.htm", "r") as file:
                 HTML=file.read().split("\n")
@@ -32,7 +32,7 @@ def read():
                 HTML4 = ">".join(map(str,HTML3))
                 HTML5 = (HTML4.split(">"))
  
-                renderMain.startWindow(HTML5)
+                renderMain.startWindow(HTML5, True, fileName)
     else:
         #Parse HTML for websites on the internet
         import requests
@@ -44,6 +44,6 @@ def read():
         HTML3 = ">".join(map(str,HTML2))
         HTML4 = (HTML3.split(">"))
 
-        renderMain.startWindow(HTML4)
+        renderMain.startWindow(HTML4, True, fileName)
 
 read()
