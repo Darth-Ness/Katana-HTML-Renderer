@@ -2,26 +2,27 @@ import tkinter
 def startWindow(toRender, isOnline, fileName):
 
     root = tkinter.Tk()
-    textTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p"]
+    textTags = ["<h1", "<h2", "<h3", "<h4", "<h5", "<h6", "<p"]
     root.configure(bg='white', padx=8, pady=8)
     isCentered = False
     u = 0
+    #print(toRender)
     while(u < len(toRender)):
         if toRender[u] in textTags:
             renderText(toRender, u, root, isCentered)
-        if "img" in toRender[u]:
+        if "<img" in toRender[u]:
             renderImage(root, toRender[u], isOnline, fileName, isCentered)
-        if "button" in toRender[u] and not "/" in toRender[u]:
+        if "<button" in toRender[u] and not "/" in toRender[u]:
             renderButton(root, toRender[u+1], isCentered)
-        if "br" in toRender[u]:
+        if "<br" in toRender[u]:
             renderBreak(root,isCentered)
-        if "center" in toRender[u]:
+        if "<center" in toRender[u]:
             isCentered = True
-        if "/center" in toRender[u]:
+        if "</center" in toRender[u]:
             isCentered = False
-        if "title" in toRender[u]:
+        if "<title" in toRender[u]:
             setTitle(root, toRender[u+1])
-        if "hr" in toRender[u]:
+        if "<hr" in toRender[u]:
             renderHRule(root)
         u+=1
     #root.destroy()
@@ -32,17 +33,17 @@ def renderText(TRtext, ITR, TTR, C):
     from tkinter.font import Font
     textSize = 12
 
-    if "h1" in TRtext[ITR]:
+    if "<h1" in TRtext[ITR]:
         textSize = 23.9
-    if "h2" in TRtext[ITR]:
+    if "<h2" in TRtext[ITR]:
         textSize = 17.9
-    if "h3" in TRtext[ITR]:
+    if "<h3" in TRtext[ITR]:
         textSize = 14
-    if "h4" in TRtext[ITR]:
+    if "<h4" in TRtext[ITR]:
         textSize = 15.9
-    if "h5" in TRtext[ITR]:
+    if "<h5" in TRtext[ITR]:
         textSize = 9.9
-    if "h6" in TRtext[ITR]:
+    if "<h6" in TRtext[ITR]:
         textSize = 8
     myFont = Font(family="SF Pro bold", size=int(textSize))
     text = tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
@@ -54,34 +55,51 @@ def renderText(TRtext, ITR, TTR, C):
 def renderImage(root, tags, isOnline, url, isCentered):
     from PIL import ImageTk, Image
     global img
-    img = ImageTk.PhotoImage(Image.open(findTarget(tags, isOnline, url)))
-    panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
-    panel.image = img
-    if (isCentered):
-        panel.pack(side=tkinter.TOP, anchor=tkinter.CENTER)
-    else:
-        panel.pack(side=tkinter.TOP, anchor=tkinter.NW)
+    toTry = findTarget(tags, isOnline, url)
+    if (toTry != "Error"):
+        try:
+            img = ImageTk.PhotoImage(Image.open(toTry))
+            panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
+            panel.image = img
+            if (isCentered):
+                panel.pack(side=tkinter.TOP, anchor=tkinter.CENTER)
+            else:
+                panel.pack(side=tkinter.TOP, anchor=tkinter.NW)
+        except:
+            img = ImageTk.PhotoImage(Image.open("core/ui/noimage.png"))
+            panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
+            panel.image = img
+            if (isCentered):
+                panel.pack(side=tkinter.TOP, anchor=tkinter.CENTER)
+            else:
+                panel.pack(side=tkinter.TOP, anchor=tkinter.NW)
 
 def findTarget(item, parseType, url):
     #Loop through the item to find a quotation mark 
-
-    i = 0
-    fileName = ""
-    while (item[i] != "\""):
-        i+=1
+    try:
+        i = item.find("src=")
+        fileName = ""
+        while (item[i] != "\""):
+            i+=1
     #then find the name of the file by moving to the next mark
-    i+=1
-
-    while (item[i] != "\""):
-        fileName += item[i]
         i+=1
 
-    if (parseType):
-        import requests
-        img_data = requests.get(str(url) + "/" + fileName).content
-        with open(fileName, 'wb') as handler:
-            handler.write(img_data)
-    return fileName
+        while (item[i] != "\""):
+            fileName += item[i]
+            i+=1
+
+        if (parseType):
+            import requests
+            img_data = requests.get(str(url) + "/" + fileName).content
+            try:
+                with open(fileName, 'wb') as handler:
+                    handler.write(img_data)
+            except:
+                fileName = "core/ui/noimage.png"
+        return fileName
+    except:
+        print("FATAL ERROR: No src found")
+        return "Error"
 
 def renderButton(window, text, isCentered):
     button = tkinter.Button(window, text=text)
