@@ -6,7 +6,7 @@ def startWindow(toRender, isOnline, fileName):
     root.configure(bg='white', padx=8, pady=8)
     isCentered = False
     u = 0
-    #print(toRender)
+    print(toRender)
     while(u < len(toRender)):
         if toRender[u] in textTags:
             renderText(toRender, u, root, isCentered)
@@ -25,14 +25,13 @@ def startWindow(toRender, isOnline, fileName):
         if "<hr" in toRender[u]:
             renderHRule(root)
         u+=1
-    #root.destroy()
+    root.destroy()
     root.mainloop()
 
 
 def renderText(TRtext, ITR, TTR, C):
     from tkinter.font import Font
     textSize = 12
-
     if "<h1" in TRtext[ITR]:
         textSize = 23.9
     if "<h2" in TRtext[ITR]:
