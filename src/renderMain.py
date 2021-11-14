@@ -25,7 +25,7 @@ def startWindow(toRender, isOnline, fileName):
         if "<hr" in toRender[u]:
             renderHRule(root)
         u+=1
-    root.destroy()
+    #root.destroy()
     root.mainloop()
 
 
