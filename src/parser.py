@@ -6,22 +6,19 @@ import renderMain
 def parse(toParse, isOnline, fileName) :
     i = 0
     u = 0
-    if ">" in toParse[i]:
-
-        #Scan for a ">"
-
-        while (i < len(toParse)):
+    renderMain.startWindow(toParse, isOnline, fileName, i, True)
+    while (i < len(toParse)):
         
-            while(u < len(toParse[i])):
+        while(u < len(toParse[i])):
 
-                if toParse[i][u] == ">":
-                    pushEnter(u, len(toParse[i]), i, toParse)
-                u+=1
-            i+=1
-            u = 0
+            if toParse[i][u] == ">":
+                pushEnter(u, len(toParse[i]), i, toParse)
+                renderMain.startWindow(toParse, isOnline, fileName, i, False)
+            u+=1
+        i+=1
+        u = 0
 
     #Invoke the renderer
-    renderMain.startWindow(toParse, isOnline, fileName)
 
 #When a ">" is detected move the rest of the line to a new element
 
@@ -29,31 +26,11 @@ def pushEnter(linePos, lineLength, lineElement, list) :
     
     #Check if ">" is at the end of the line
     if linePos+1 != lineLength:
-        
-        g = lineElement
-        p = linePos
-        i = 0
-        openingTag = ""
-        endingTag = ""
-        
-        parseValue = ""
+
         #Idenitfy the opening tag
+        openingTag = list[lineElement][0: list[lineElement].find(">")]
 
-        while(list[g][i] != ">"):
-            openingTag += list[g][i]
-            i+=1
-        openingTag +=">"
-
-        #Loop to the end of the item then add it to a new line
-        while(p < lineLength-2 and list[g][p+1] != "<" and list[g][p+2] != "/"):
-
-            p+=1
-            parseValue += list[g][p]
-        while(p < lineLength-1):
-            p+=1
-            endingTag += list[g][p]
-
-        list.insert(g+1, openingTag)
-        list.insert(g+2, parseValue)
-        list.insert(g+3, endingTag)
-        del list[g]
+        parseValue = list[lineElement][linePos+1: lineLength]
+        list.insert(lineElement+1, openingTag)
+        list.insert(lineElement+2, parseValue)
+        del list[lineElement]

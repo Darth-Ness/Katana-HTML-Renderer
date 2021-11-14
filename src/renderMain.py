@@ -1,32 +1,30 @@
 import tkinter
-def startWindow(toRender, isOnline, fileName):
-
-    root = tkinter.Tk()
-    textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]
-    root.configure(bg='white', padx=8, pady=8)
-    isCentered = False
-    u = 0
-    print(toRender)
-    while(u < len(toRender)):
-        if toRender[u] in textTags:
-            renderText(toRender, u, root, isCentered)
-        if "<img" in toRender[u]:
-            renderImage(root, toRender[u], isOnline, fileName, isCentered)
-        if "<button" in toRender[u] and not "/" in toRender[u]:
-            renderButton(root, toRender[u+1], isCentered)
-        if "<br" in toRender[u]:
-            renderBreak(root,isCentered)
-        if "<center" in toRender[u]:
-            isCentered = True
-        if "</center" in toRender[u]:
-            isCentered = False
-        if "<title" in toRender[u]:
-            setTitle(root, toRender[u+1])
-        if "<hr" in toRender[u]:
-            renderHRule(root)
-        u+=1
-    #root.destroy()
-    root.mainloop()
+def startWindow(toRender, isOnline, fileName, u, setup):
+    if (setup == True):
+        root = tkinter.Tk()
+        root.configure(bg='white', padx=8, pady=8)
+        isCentered = False
+        textTags = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"]
+        if (setup == False):
+            print(toRender)
+            if toRender[u] in textTags:
+                renderText(toRender, u, root, isCentered)
+            if "<img" in toRender[u]:
+                renderImage(root, toRender[u], isOnline, fileName, isCentered)
+            if "<button" in toRender[u] and not "/" in toRender[u]:
+                renderButton(root, toRender[u+1], isCentered)
+            if "<br" in toRender[u]:
+                renderBreak(root,isCentered)
+            if "<center" in toRender[u]:
+                isCentered = True
+            if "</center" in toRender[u]:
+                isCentered = False
+            if "<title" in toRender[u]:
+                setTitle(root, toRender[u+1])
+            if "<hr" in toRender[u]:
+                renderHRule(root)
+            #root.destroy()
+            root.mainloop()
 
 
 def renderText(TRtext, ITR, TTR, C):

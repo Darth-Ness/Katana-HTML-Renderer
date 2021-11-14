@@ -2,13 +2,12 @@ import parser
 #Import the HTML file to parse
 def read():
 
-    #fileName = "test.htm"
-    fileName = input("Enter HTML file: ")
+    fileName = "test.htm"
+    #fileName = input("Enter HTML file: ")
 
     
     if (fileName == "test.htm"):
-        fileName = "core/test.htm"
-        
+        fileName = "core/test.htm"    
     if (":"  not in fileName):
         #Parse HTML for local file
         try:
