@@ -2,7 +2,7 @@ import tkinter
 def startWindow(toRender, isOnline, fileName):
     root = tkinter.Tk()
     root.configure(bg='white', padx=8, pady=8)
-    isCentered = "NW"
+    isCentered = "nw"
     textTags = ["<h1", "<h2", "<h3", "<h4", "<h5", "<h6", "<p"]
     u = 0
     print(toRender)
@@ -18,14 +18,14 @@ def startWindow(toRender, isOnline, fileName):
         if "<center" in toRender[u]:
             isCentered = "center"
         if "</center" in toRender[u]:
-            isCentered = "NW"
+            isCentered = "nw"
         if "<title" in toRender[u]:
             root.title(toRender[u+1])
             u+=1
         if "<hr" in toRender[u]:
             renderHRule(root)
         u+=1
-    root.destroy()
+    #root.destroy()
     root.mainloop()
 
 
@@ -87,7 +87,7 @@ def renderButton(window, text, isCentered):
 
 def renderBreak(window, centered):
     br = tkinter.Label(window, bg="white")
-    br.pack(side=tkinter.TOP, anchor=tkinter.isCentered)
+    br.pack(side=tkinter.TOP, anchor=centered)
 #Render a horizontal line
 
 def renderHRule(root):
