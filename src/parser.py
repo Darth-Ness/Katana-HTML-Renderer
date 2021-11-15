@@ -6,19 +6,18 @@ import renderMain
 def parse(toParse, isOnline, fileName) :
     i = 0
     u = 0
-    renderMain.startWindow(toParse, isOnline, fileName, i, True)
     while (i < len(toParse)):
         
         while(u < len(toParse[i])):
 
             if toParse[i][u] == ">":
                 pushEnter(u, len(toParse[i]), i, toParse)
-                renderMain.startWindow(toParse, isOnline, fileName, i, False)
             u+=1
         i+=1
         u = 0
 
     #Invoke the renderer
+    renderMain.startWindow(toParse, isOnline, fileName)
 
 #When a ">" is detected move the rest of the line to a new element
 
