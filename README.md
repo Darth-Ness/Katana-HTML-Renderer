@@ -14,8 +14,10 @@ python3 importer.py
 ```
   
 ## Features
-- Due to the way code is rendered, you do not have to close your tags.
+- Due to the way code is parsed, you do not have to close your tags.
 - It is very fast
+- It doesn't use very much RAM
+- Stoarge usage is almost non-existant.
   
 ## Limitations
 - No CSS parsing.
