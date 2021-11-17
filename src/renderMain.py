@@ -80,6 +80,24 @@ def findTarget(item, parseType, url):
     except:
         print("FATAL ERROR: No src found")
         return "Error"
+def getClasses(item, parseType, url):
+    #Loop through the item to find a quotation mark 
+    try:
+        i = item.find("class=")
+        classes = ""
+        while (item[i] != "\""):
+            i+=1
+    #then find the classes by moving to the next mark
+        i+=1
+
+        while (item[i] != "\""):
+            classes += item[i]
+            i+=1
+        classes.split(" ")
+        for cIass in classes:
+            # wip
+    except:
+        pass
 
 def renderButton(window, text, isCentered):
     button = tkinter.Button(window, text=text)
