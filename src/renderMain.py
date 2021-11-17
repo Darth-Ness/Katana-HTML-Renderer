@@ -31,10 +31,8 @@ def startWindow(toRender, isOnline, fileName):
 
 def renderText(TRtext, ITR, TTR, C):
     from tkinter.font import Font
-    textSizes = ["<h1",23.9, "<h2", 17.9, "<h3", 15.9, "<h4", 14, "<h5", 9.9, "<h6", 8, "<p", 12]
+    textSizes = ["<katanaclassbig>", 15, "<h1",23.9, "<h2", 17.9, "<h3", 15.9, "<h4", 14, "<h5", 9.9, "<h6", 8, "<p", 12]
     textSize = textSizes[textSizes.index(TRtext[ITR])+1]
-    if "katanaclassbig" in getclasses(TRtext):
-        textSize = 15
     myFont = Font(family="SF Pro bold", size=int(textSize))
     text = tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
     text.pack(side=tkinter.TOP, anchor=C)
@@ -57,7 +55,7 @@ def startImage(root, tags, isOnline, url, isCentered):
             renderImage(root, isCentered)
 
 def findTarget(item, parseType, url):
-    #Loop through the item to find a quotation mark 
+    #Loop through the item to find a quotation mark
     try:
         i = item.find("src=")
         fileName = ""
@@ -82,24 +80,6 @@ def findTarget(item, parseType, url):
     except:
         print("FATAL ERROR: No src found")
         return "Error"
-def getClasses(item):
-    #Loop through the item to find a quotation mark 
-    try:
-        i = item.find("class=")
-        classes = ""
-        while (item[i] != "\""):
-            i+=1
-    #then find the classes by moving to the next mark
-        i+=1
-
-        while (item[i] != "\""):
-            classes += item[i]
-            i+=1
-        classes = classes.split(" ")
-        return classes
-    except:
-        return []
-
 def renderButton(window, text, isCentered):
     button = tkinter.Button(window, text=text)
     button.pack(side=tkinter.TOP, anchor=isCentered)
