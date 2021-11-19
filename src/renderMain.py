@@ -31,7 +31,7 @@ def startWindow(toRender, isOnline, fileName):
 
 def renderText(TRtext, ITR, TTR, C):
     from tkinter.font import Font
-    textSizes = ["<katanaclassbig>", 15, "<h1",23.9, "<h2", 17.9, "<h3", 15.9, "<h4", 14, "<h5", 9.9, "<h6", 8, "<p", 12]
+    textSizes = ["<katanaclassbig>", 15, "<katanaclassbig2>",20,"<katanaclassbig3>",30, "<h1",23.9, "<h2", 17.9, "<h3", 15.9, "<h4", 14, "<h5", 9.9, "<h6", 8, "<p", 12]
     textSize = textSizes[textSizes.index(TRtext[ITR])+1]
     myFont = Font(family="SF Pro bold", size=int(textSize))
     text = tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
