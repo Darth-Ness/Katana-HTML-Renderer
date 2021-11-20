@@ -18,15 +18,16 @@ python3 importer.py
 - It is very fast
 - It doesn't use very much RAM
 - Stoarge usage is almost non-existant.
+- Displays with a cleaner format
   
 ## Limitations
-- No CSS parsing.
+- EXTREMLY limited CSS
 - No JavaScript at all.
 
 ## Dependencies
 - Tkinter
 - Pillow
-- Git
+- Requests
   
 Have something you would like to add? Please make a pull request with your changes!
 
