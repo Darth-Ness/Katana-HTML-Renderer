@@ -5,7 +5,7 @@ def startWindow(toRender, isOnline, fileName):
     isCentered = "nw"
     textTags = ["<h1", "<h2", "<h3", "<h4", "<h5", "<h6", "<p"]
     u = 0
-    print(toRender)
+    #print(toRender)
     while(u < len(toRender)):
         if toRender[u] in textTags:
             renderText(toRender, u, root, isCentered)
@@ -24,6 +24,11 @@ def startWindow(toRender, isOnline, fileName):
             u+=1
         if "<hr" in toRender[u]:
             renderHRule(root)
+        if "<style>" in toRender[u]:
+            import handleCSS
+            handleCSS.doCSS(root, toRender, u)
+            u = toRender.index("</style>")+1
+
         u+=1
     #root.destroy()
     root.mainloop()
@@ -34,7 +39,7 @@ def renderText(TRtext, ITR, TTR, C):
     textSizes = ["<h1",23.9, "<h2", 17.9, "<h3", 15.9, "<h4", 14, "<h5", 9.9, "<h6", 8, "<p", 12]
     textSize = textSizes[textSizes.index(TRtext[ITR])+1]
     myFont = Font(family="SF Pro bold", size=int(textSize))
-    text = tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg='white', font=myFont)
+    text = tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font=myFont)
     text.pack(side=tkinter.TOP, anchor=C)
 
 def renderImage(root, isCentered):
@@ -91,6 +96,6 @@ def renderBreak(window, centered):
 #Render a horizontal line
 
 def renderHRule(root):
-    canvas=tkinter.Canvas(root, width=1000, height=1, background="white")
+    canvas=tkinter.Canvas(root, width=1500, height=1, background="white")
     canvas.pack()
-    canvas.create_line(1000,0,10,0, fill="black", width=5)
+    canvas.create_line(1500,0,10,0, fill="black", width=5)

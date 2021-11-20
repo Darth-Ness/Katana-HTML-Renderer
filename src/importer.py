@@ -16,10 +16,8 @@ def read():
                 parser.parse(HTML, False, fileName)
                 
 
-        except:
-            with open("core/404.htm", "r") as file:
-                HTML=file.read().split("\n")
-                parser.parse(HTML, False, fileName)
+        except AssertionError as msg:
+            print(msg)
     else:
         #Parse HTML for websites on the internet
         import requests
