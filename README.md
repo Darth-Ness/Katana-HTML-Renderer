@@ -1,15 +1,13 @@
 # Katana-HTML-Renderer
 
-Katana is very, very limited at the moment.
-When using the dev version you get the lastest features, but it is not as stable as the main branch.
-If you are intrested in the basic JS engine, you can find it here https://github.com/Darth-Ness/Shuriken-JS-Engine
+This is the CLI version of Katana, bascailly it only renderers inside of the terminal. So no buttons, CSS, JS, or pictures.
 
-Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `img`, `button`, `br` `center`
+Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`,  `br` `center`
 
 ## Install
 If you would like to test this on your computer run the following commands:
 ```bash
-git clone https://github.com/Darth-Ness/Katana-HTML-Renderer.git
+git clone https://github.com/Darth-Ness/Katana-HTML-Renderer.git -b cli
 cd Katana-HTML-Renderer
 python3 importer.py
 ```
@@ -19,17 +17,15 @@ python3 importer.py
 - It is very fast
 - It doesn't use very much RAM
 - Stoarge usage is almost non-existant.
-- Displays with a cleaner format
   
 ## Limitations
-- EXTREMLY limited CSS
-- No JavaScript at all (At least until we add Shuriken).
+- No CSS (Fixed in master/dev
+- No JavaScript at all.
+- No Images (Fixed in master/dev)
 
 ## Dependencies
-- Tkinter
-- Pillow
-- Requests
+- none
   
 Have something you would like to add? Please make a pull request with your changes!
 
-Font Used: SF Pro
+Font Used: Whatever font your terminal uses.
