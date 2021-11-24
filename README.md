@@ -4,7 +4,7 @@ Katana is very, very limited at the moment.
 When using the dev version you get the lastest features, but it is not as stable as the main branch.
 If you are intrested in the basic JS engine, you can find it here https://github.com/Darth-Ness/Shuriken-JS-Engine
 
-Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `img`, `button`, `br` `center`
+Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `img`, `button`, `br`, `center`, `katanaclassbig`, `katanaclassbig2`, `katanaclassbig3`
 
 ## Install
 If you would like to test this on your computer run the following commands:
