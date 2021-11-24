@@ -2,6 +2,7 @@
 
 Katana is very, very limited at the moment.
 When using the dev version you get the lastest features, but it is not as stable as the main branch.
+If you are intrested in the basic JS engine, you can find it here https://github.com/Darth-Ness/Shuriken-JS-Engine
 
 Only the following tags can be rendered: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `img`, `button`, `br` `center`
 
@@ -18,15 +19,16 @@ python3 importer.py
 - It is very fast
 - It doesn't use very much RAM
 - Stoarge usage is almost non-existant.
+- Displays with a cleaner format
   
 ## Limitations
-- No CSS parsing.
-- No JavaScript at all.
+- EXTREMLY limited CSS
+- No JavaScript at all (At least until we add Shuriken).
 
 ## Dependencies
 - Tkinter
 - Pillow
-- Git
+- Requests
   
 Have something you would like to add? Please make a pull request with your changes!
 
