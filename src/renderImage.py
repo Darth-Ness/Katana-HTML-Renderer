@@ -3,17 +3,17 @@ def renderImage(root, isCentered, tkinter):
     panel.image = img
     panel.pack(side=tkinter.TOP, anchor=isCentered)
 #Render image after finding the file
-def startImage(root, tags, isOnline, url, isCentered):
+def startImage(root, tags, isOnline, url, isCentered, tkinter):
     from PIL import ImageTk, Image
     global img
     toTry = findTarget(tags, isOnline, url)
     if (toTry != "Error"):
         try:
             img = ImageTk.PhotoImage(Image.open(toTry))
-            renderImage(root, isCentered)
+            renderImage(root, isCentered, tkinter)
         except:
             img = ImageTk.PhotoImage(Image.open("core/ui/noimage.png"))
-            renderImage(root, isCentered)
+            renderImage(root, isCentered, tkinter)
 
 def findTarget(item, parseType, url):
     #Loop through the item to find a quotation mark 
