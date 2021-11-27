@@ -1,4 +1,3 @@
-import renderMain
 
  #Completes spliting lines with a open (<example>) and a close (</example>)
  #It also removes spaces from non outputed text
@@ -17,6 +16,7 @@ def parse(toParse, isOnline, fileName) :
         u = 0
 
     #Invoke the renderer
+    import renderMain
     renderMain.startWindow(toParse, isOnline, fileName)
 
 #When a ">" is detected move the rest of the line to a new element

@@ -36,11 +36,9 @@ def startWindow(toRender, isOnline, fileName):
 
 
 def renderText(TRtext, ITR, TTR, C):
-    from tkinter.font import Font
-    textSizes = ["<katanaclassbig", 15, "<katanaclassbig2",20,"<katanaclassbig3",30, "<h1",23.9, "<h2", 17.9, "<h3", 15.9, "<h4", 14, "<h5", 9.9, "<h6", 8, "<p", 12]
+    textSizes = ["<katanaclassbig", 15, "<katanaclassbig2",20,"<katanaclassbig3",30, "<h1",24, "<h2", 18, "<h3", 16, "<h4", 14, "<h5", 10, "<h6", 8, "<p", 12]
     textSize = textSizes[textSizes.index(TRtext[ITR])+1]
-    myFont = Font(family="SF Pro bold", size=int(textSize))
-    tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font=myFont).pack(side=tkinter.TOP, anchor=C)
+    tkinter.Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font= ("SF Pro", textSize)).pack(side=tkinter.TOP, anchor=C)
 
 def renderHRule(root):
     canvas=tkinter.Canvas(root, width=1500, height=1, background="white")
