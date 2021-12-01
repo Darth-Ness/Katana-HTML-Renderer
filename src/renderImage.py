@@ -1,19 +1,20 @@
-def renderImage(root, isCentered, tkinter):
+import tkinter
+def renderImage(root, isCentered):
     panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
     panel.image = img
     panel.pack(side=tkinter.TOP, anchor=isCentered)
 #Render image after finding the file
-def startImage(root, tags, isOnline, url, isCentered, tkinter):
+def startImage(root, tags, isOnline, url, isCentered):
     from PIL import ImageTk, Image
     global img
     toTry = findTarget(tags, isOnline, url)
     if (toTry != "Error"):
         try:
             img = ImageTk.PhotoImage(Image.open(toTry))
-            renderImage(root, isCentered, tkinter)
+            renderImage(root, isCentered)
         except:
             img = ImageTk.PhotoImage(Image.open("core/ui/noimage.png"))
-            renderImage(root, isCentered, tkinter)
+            renderImage(root, isCentered)
 
 def findTarget(item, parseType, url):
     #Loop through the item to find a quotation mark 

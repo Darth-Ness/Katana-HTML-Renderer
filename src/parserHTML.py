@@ -3,10 +3,9 @@
  #It also removes spaces from non outputed text
 
 def parse(toParse, isOnline, fileName) :
-    i = 0
-    u = 0
-    while (i < len(toParse)):
-        
+    i,u = 0,0
+    length = len(toParse)+3
+    while (i < length):
         while(u < len(toParse[i])):
 
             if toParse[i][u] == ">":
