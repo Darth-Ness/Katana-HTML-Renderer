@@ -1,10 +1,9 @@
 #Import the HTML file to parse
-from functools import lru_cache
-@lru_cache(maxsize=500)
+
 def read():
 
-    #fileName = "test.htm"
-    fileName = input("Enter HTML file: ")
+    fileName = "test.htm"
+    #fileName = input("Enter HTML file: ")
     import parserHTML
 
     
@@ -25,5 +24,4 @@ def read():
         import requests
         HTML = requests.get(fileName, verify=True)
         parserHTML.parse(HTML.text.split(">"), False, fileName)
-        
 read()

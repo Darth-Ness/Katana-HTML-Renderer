@@ -4,8 +4,7 @@
 
 def parse(toParse, isOnline, fileName) :
     i,u = 0,0
-    length = len(toParse)+3
-    while (i < length):
+    while (i < len(toParse)):
         while(u < len(toParse[i])):
 
             if toParse[i][u] == ">":
@@ -20,15 +19,15 @@ def parse(toParse, isOnline, fileName) :
 
 #When a ">" is detected move the rest of the line to a new element
 
-def pushEnter(linePos, lineLength, lineElement, list) :
+def pushEnter(u, Llen, i, list) :
     
     #Check if ">" is at the end of the line
-    if linePos+1 != lineLength:
+    if u+1 != Llen:
 
         #Idenitfy the opening tag
-        openingTag = list[lineElement][0: list[lineElement].find(">")]
+        openingTag = list[i][0: list[i].find(">")]
 
-        parseValue = list[lineElement][linePos+1: lineLength]
-        list.insert(lineElement+1, openingTag)
-        list.insert(lineElement+2, parseValue)
-        del list[lineElement]
+        parseValue = list[i][u+1: Llen]
+        list.insert(i+1, openingTag)
+        list.insert(i+2, parseValue)
+        del list[i]
