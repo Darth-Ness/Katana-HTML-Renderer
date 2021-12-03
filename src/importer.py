@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 #Import the HTML file to parse
 
 def read():
 
-    fileName = "test.htm"
-    #fileName = input("Enter HTML file: ")
-    import parserHTML
+    #fileName = "test.htm"
+    fileName = input("Enter HTML file: ")
+    from parserHTML import parse
 
     
     if (fileName == "test.htm"):
@@ -14,14 +15,14 @@ def read():
         try:
             with open(fileName, "r") as file:
                 HTML=file.read().split("\n")
-                parserHTML.parse(HTML, False, fileName)
+                parse(HTML, False, fileName)
                 
 
         except AssertionError as msg:
             print(msg)
     else:
         #Parse HTML for websites on the internet
-        import requests
-        HTML = requests.get(fileName, verify=True)
-        parserHTML.parse(HTML.text.split(">"), False, fileName)
+        from requests import get
+        HTML = get(fileName, verify=True)
+        parse(HTML.text.split(">"), False, fileName)
 read()

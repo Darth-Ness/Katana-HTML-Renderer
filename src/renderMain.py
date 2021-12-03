@@ -8,16 +8,16 @@ def startWindow(toRender, isOnline, fileName):
     u = 0
     #Load dependencies (if needed)
     if ("<img" in toRender):
-        import renderImage
+        from renderImage import startImage
     if ("<style>" in toRender):
-        import handleCSS
+        from handleCSS import doCSS
 
     print(toRender)
     length = len(toRender)
     while(u < length):
         if toRender[u] in textTags or toRender[u] in tags:
             if toRender[u] in textTags:renderText(toRender, u, root, isCentered)
-            if "<img" in toRender[u]:renderImage.startImage(root, toRender[u], isOnline, fileName, isCentered)
+            if "<img" in toRender[u]:startImage(root, toRender[u], isOnline, fileName, isCentered)
             if "<button" in toRender[u]:Button(root, text=toRender[u+1]).pack(side=TOP, anchor=isCentered)
             if "<br" in toRender[u]:Label(root, bg=root.cget('bg')).pack(side=TOP, anchor=isCentered)
             if "<center" in toRender[u]:isCentered = "center"
@@ -25,7 +25,7 @@ def startWindow(toRender, isOnline, fileName):
             if "<title" in toRender[u]:root.title(toRender[u+1])
             if "<hr>" in toRender[u]:renderHRule(root)
             if "<style>" in toRender[u]:
-                handleCSS.doCSS(root, toRender, u)
+                doCSS(root, toRender, u)
                 u = toRender.index("</style>")+1
 
         u+=1
@@ -36,7 +36,7 @@ def startWindow(toRender, isOnline, fileName):
 def renderText(TRtext, ITR, TTR, C):
     textSizes = ["<katanaclassbig", 15, "<katanaclassbig2",20,"<katanaclassbig3",30, "<h1",24, "<h2", 18, "<h3", 16, "<h4", 14, "<h5", 10, "<h6", 8, "<p", 12]
     textSize = textSizes[textSizes.index(TRtext[ITR])+1]
-    Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font= ("SF Pro", textSize)).pack(side=TOP, anchor=C)
+    Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font= ("Helvetica", textSize)).pack(side=TOP, anchor=C)
 
 def renderHRule(root):
     canvas=Canvas(root, width=1500, height=1, background="white")

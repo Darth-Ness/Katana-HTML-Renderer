@@ -14,8 +14,8 @@ def parse(toParse, isOnline, fileName) :
         u = 0
 
     #Invoke the renderer
-    import renderMain
-    renderMain.startWindow(toParse, isOnline, fileName)
+    from renderMain import startWindow
+    startWindow(toParse, isOnline, fileName)
 
 #When a ">" is detected move the rest of the line to a new element
 

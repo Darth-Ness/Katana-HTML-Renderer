@@ -1,8 +1,8 @@
-import tkinter
+from tkinter import Label,TOP,NW
 def renderImage(root, isCentered):
-    panel = tkinter.Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=tkinter.NW)
+    panel = Label(root, width=img.width(), height=img.height(), bg='white', highlightthickness=0, image=img, anchor=NW)
     panel.image = img
-    panel.pack(side=tkinter.TOP, anchor=isCentered)
+    panel.pack(side=TOP, anchor=isCentered)
 #Render image after finding the file
 def startImage(root, tags, isOnline, url, isCentered):
     from PIL import ImageTk, Image
@@ -31,8 +31,8 @@ def findTarget(item, parseType, url):
             i+=1
 
         if (parseType):
-            import requests
-            img_data = requests.get(str(url) + "/" + fileName).content
+            from requests import get
+            img_data = get(str(url) + "/" + fileName).content
             try:
                 with open(fileName, 'wb') as handler:
                     handler.write(img_data)
