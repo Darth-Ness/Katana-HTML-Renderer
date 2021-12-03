@@ -32,4 +32,4 @@ python3 importer.py
   
 Have something you would like to add? Please make a pull request with your changes!
 
-Font Used: SF Pro
+Font Used: Helvetica
