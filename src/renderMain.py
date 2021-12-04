@@ -29,7 +29,7 @@ def startWindow(toRender, isOnline, fileName):
                 u = toRender.index("</style>")+1
 
         u+=1
-    root.destroy()
+    #root.destroy()
     root.mainloop()
 
 
