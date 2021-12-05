@@ -3,8 +3,8 @@
 
 def read():
 
-    fileName = "test.htm"
-    #fileName = input("Enter HTML file: ")
+    #fileName = "test.htm"
+    fileName = input("Enter HTML file: ")
     from parserHTML import parse
 
     
