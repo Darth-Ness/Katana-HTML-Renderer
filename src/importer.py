@@ -12,14 +12,9 @@ def read():
         fileName = "core/test.htm"    
     if (":"  not in fileName):
         #Parse HTML for local file
-        try:
-            with open(fileName, "r") as file:
-                HTML=file.read().split("\n")
-                parse(HTML, False, fileName)
-                
-
-        except AssertionError as msg:
-            print(msg)
+        with open(fileName, "r") as file:
+            HTML=file.read().split("\n")
+            parse(HTML, False, fileName)
     else:
         #Parse HTML for websites on the internet
         from requests import get

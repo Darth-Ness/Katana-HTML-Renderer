@@ -4,7 +4,7 @@ def startWindow(toRender, isOnline, fileName):
     root.configure(bg='white', padx=8, pady=8)
     isCentered = "nw"
     textSizes = ["<katanaclassbig", 15, "<katanaclassbig2",20,"<katanaclassbig3",30, "<h1",24, "<h2", 18, "<h3", 16, "<h4", 14, "<h5", 10, "<h6", 8, "<p", 12]
-    tags = ["<img", "<button", "<br>", "<center>", "</center>", "<title", "<hr>", "<style>"]
+    tags = ["<img", "<button", "<br>", "<center>", "</center>", "<title", "<hr>", "<style>", "<script>"]
     u = 0
     #Load dependencies (if needed)
     if ("<img" in toRender):
@@ -12,7 +12,7 @@ def startWindow(toRender, isOnline, fileName):
     if ("<style>" in toRender):
         from handleCSS import doCSS
 
-    print(toRender)
+    #print(toRender)
     length = len(toRender)
     while(u < length):
         if toRender[u] in textSizes or toRender[u] in tags:
@@ -27,6 +27,13 @@ def startWindow(toRender, isOnline, fileName):
             if "<style>" in toRender[u]:
                 doCSS(root, toRender, u)
                 u = toRender.index("</style>")+1
+            if "<script>" in toRender[u]:
+                try:
+                    from handleJS import executeJS
+                    executeJS(root, toRender, isCentered)
+                    u = toRender.index("</script>")+1
+                except:
+                    print("Either Shurkien is not included, or there was a error during excution.")
         else:renderText(toRender, u, root, isCentered, False, textSizes)
 
         u+=1
