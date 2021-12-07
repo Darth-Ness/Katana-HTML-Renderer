@@ -8,8 +8,7 @@ def read():
     from parserHTML import parse
 
     
-    if (fileName == "test.htm"):
-        fileName = "core/test.htm"    
+    if (fileName == "test.htm"):fileName = "core/test.htm"    
     if (":"  not in fileName):
         #Parse HTML for local file
         with open(fileName, "r") as file:
@@ -19,5 +18,5 @@ def read():
         #Parse HTML for websites on the internet
         from requests import get
         HTML = get(fileName, verify=True)
-        parse(HTML.text.split(">"), False, fileName)
+        parse(HTML.text.split(">"), True, fileName)
 read()
