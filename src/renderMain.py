@@ -45,8 +45,7 @@ def renderText(TRtext, ITR, TTR, C, isTag, textSizes):
     if(isTag):
         textSize = textSizes[textSizes.index(TRtext[ITR])+1]
         Label(TTR, text=TRtext[ITR+1], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font= ("Helvetica", textSize)).pack(side=TOP, anchor=C)
-    else:
-        Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font= ("Helvetica", 16)).pack(side=TOP, anchor=C)
+    else:Label(TTR, text=TRtext[ITR], fg="black", height= 1, borderwidth=0, bg=TTR.cget('bg'), font= ("Helvetica", 16)).pack(side=TOP, anchor=C)
 
 def renderHRule(root):
     canvas=Canvas(root, width=1500, height=1, background="white")
