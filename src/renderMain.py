@@ -1,16 +1,19 @@
-from tkinter import Button, Tk, TOP, Label, Canvas
+from tkinter import Button, Tk, TOP, Label, Canvas, Entry
 def startWindow(toRender, isOnline, fileName):
     root = Tk()
     root.configure(bg='white', padx=8, pady=8)
     isCentered = "nw"
     textSizes = ["<katanaclassbig", 15, "<katanaclassbig2",20,"<katanaclassbig3",30, "<h1",24, "<h2", 18, "<h3", 16, "<h4", 14, "<h5", 10, "<h6", 8, "<p", 12]
-    tags = ["<img", "<button", "<br>", "<center>", "</center>", "<title", "<hr>", "<style>", "<script>"]
+    tags = ["<img", "<button", "<br>", "<center>", "</center>", "<title", "<hr>", "<style>", "<script>", "<input>"]
     u = 0
     #Load dependencies (if needed)
     if ("<img" in toRender):
         from renderImage import startImage
     if ("<style>" in toRender):
         from handleCSS import doCSS
+    if ("<script>" in toRender):
+        try:from handleJS import executeJS
+        except:print("Error: Shurkien is not included.")
 
     #print(toRender)
     length = len(toRender)
@@ -28,12 +31,9 @@ def startWindow(toRender, isOnline, fileName):
                 doCSS(root, toRender, u)
                 u = toRender.index("</style>")+1
             if "<script>" in toRender[u]:
-                try:
-                    from handleJS import executeJS
-                    executeJS(root, toRender, isCentered)
-                    u = toRender.index("</script>")+1
-                except:
-                    print("Either Shurkien is not included, or there was a error during excution.")
+                executeJS(root, toRender, isCentered)
+                u = toRender.index("</script>")+1
+            if "<input>" in toRender[u]:Entry(root).pack()
         else:renderText(toRender, u, root, isCentered, False, textSizes)
 
         u+=1
