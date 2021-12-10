@@ -8,7 +8,7 @@ def read():
     from parserHTML import parse
 
     
-    if (fileName == "test.htm"):fileName = "core/test.htm"    
+    if (fileName == "test.htm"):fileName = "core/html/test.htm"    
     if (":"  not in fileName):
         #Parse HTML for local file
         with open(fileName, "r") as file:
