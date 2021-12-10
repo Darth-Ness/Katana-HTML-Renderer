@@ -1,15 +1,6 @@
 #Parse out everything but the CSS code
-def parseOutCss(toRender,u):
-    end = toRender.index("</style>")
-    i = u+1
-    result = []
-    while (i < end):
-        result.append(toRender[i])
-        i+=1
-    return result
-
 def doCSS(root, toRender, u):
-    CSS = parseOutCss(toRender, u)
+    CSS = toRender[toRender.index("<style>")+1:toRender.index("</style>")-1]
     i = 0
     while (i < len(CSS)):
         if ("background-color:" in CSS[i]):
